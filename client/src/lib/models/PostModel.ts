@@ -14,6 +14,8 @@ export class PostModel {
     creator: z.string()
       .min(1, 'Required Field'),
     tags: z.array(z.string()),
+    selectedFile: z.string()
+      .min(1, 'Required Field'),
     likeCount: z.number().default(0),
     createdAt: z.date().default(new Date()),
     updatedAt: z.date().default(new Date()),

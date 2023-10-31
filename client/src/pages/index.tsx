@@ -4,8 +4,8 @@ import Header from '@/components/Header';
 import Posts from '@/components/posts/Posts';
 import { useAppDispatch } from '@/hooks/ReduxHooks';
 
-import { GetPosts, RemovePost } from '@/redux/PostSlicer';
-import { useEffect, useState } from 'react';
+import { GetPosts } from '@/redux/PostSlicer';
+import { useEffect } from 'react';
 
 const Home = () => {
   const dispatch = useAppDispatch();

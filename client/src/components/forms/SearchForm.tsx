@@ -2,7 +2,7 @@ import Button from '@/components/buttons/Button';
 import InputGroup from '@/components/inputs/InputGroup';
 import { useForm } from 'react-hook-form';
 import { useRouter } from 'next/router';
-import { useEffect, useState } from 'react';
+import { useEffect } from 'react';
 
 type SearchType = {
   title: string;
@@ -22,14 +22,16 @@ const SearchForm = () => {
 
   return (
     <form className='flex flex-col flex-grow gap-3'>
-      <InputGroup id="title" label="Title">
+      <InputGroup id="search-title" label="Title">
         <input 
+          id='search-title'
           className='input input-md input-bordered w-full'
           placeholder='By Title'
           {...register('title')} />
       </InputGroup>
-      <InputGroup id="creator" label="Creator">
+      <InputGroup id="search-creator" label="Creator">
         <input
+          id='search-creator'
           className='input input-md input-bordered w-full'
           placeholder='By Title'
           {...register('creator')} />

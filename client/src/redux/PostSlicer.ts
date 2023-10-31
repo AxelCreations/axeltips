@@ -26,6 +26,7 @@ const PostSlicer = createSlice({
     NewPost: (state, action: PayloadAction<PostModelType>) => {
       try {
         state.loading = true;
+        console.log({state});
         AddPost(action.payload).then(({ data: { data } }) => {
           state.data.push(data);
         });
