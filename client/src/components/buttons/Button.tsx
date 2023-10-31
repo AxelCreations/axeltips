@@ -1,15 +1,13 @@
-'use client'
-
-import { Component } from "react";
+import { ComponentProps } from "react";
 
 type ButtonProps = {
-  children: string;
+  children: React.ReactNode;
   className?: string;
-} & Component<'button'>
+} & ComponentProps<"button">
 
 const Button = ({ children, className, ...props }: ButtonProps) => {
   return (
-    <button className={`btn btn-primary ${className}`} {...props}>
+    <button className={`btn btn-primary btn-sm ${className}`} {...props}>
       {children}
     </button>
   )

@@ -11,7 +11,9 @@ const Posts = () => {
   
   
   return (
-    <h1>Post List</h1>
+    <div className="border flex w-full">
+      <h1>Post List</h1>
+    </div>
   )
 }
 
