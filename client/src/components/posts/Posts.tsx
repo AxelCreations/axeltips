@@ -1,18 +1,23 @@
-import { useAppDispatch } from '@/hooks/ReduxHooks';
-import { PostModelType } from '@/lib/models/PostModel';
+import { useAppSelector } from '@/hooks/ReduxHooks';
 import { useEffect } from 'react';
-import { useSelector } from 'react-redux';
+import PostCard from './PostCard';
 
 
 const Posts = () => {
+  const posts = useAppSelector((state) => state.Reducers.posts);
+
   useEffect(() => {
-  });
-  const posts = useSelector<{loading: boolean, posts: PostModelType[]}, PostModelType[]>(({posts}) => posts);
-  
-  
+    console.log({ posts });
+  }, [posts]);
+
   return (
-    <div className="border flex w-full">
-      <h1>Post List</h1>
+    <div className="flex flex-col w-full shadow shadow-black rounded-lg p-3">
+      {!posts.length ? <span className="loading loading-bars loading-lg"></span>
+        :
+        <div className="flex flex-wrap gap-5 justify-center md:justify-between">
+          {posts.map(post => (<PostCard key={post.id} post={post}></PostCard>))}
+        </div>
+      }
     </div>
   )
 }

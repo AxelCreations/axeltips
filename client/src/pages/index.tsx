@@ -1,17 +1,16 @@
+import { useEffect } from 'react';
 
 import Aside from '@/components/Aside';
 import Header from '@/components/Header';
 import Posts from '@/components/posts/Posts';
 import { useAppDispatch } from '@/hooks/ReduxHooks';
-
-import { GetPosts } from '@/redux/PostSlicer';
-import { useEffect } from 'react';
+import { getPostsAction } from '@/redux/actions/posts';
 
 const Home = () => {
   const dispatch = useAppDispatch();
 
   useEffect(() => {
-    dispatch(GetPosts());
+    dispatch(getPostsAction());
   }, [dispatch]);
 
   return (

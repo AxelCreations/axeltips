@@ -1,9 +1,9 @@
 import { combineReducers } from '@reduxjs/toolkit';
 
-import PostReducer from './PostSlicer';
+import posts from './reducers/posts';
 
 const Reducers = combineReducers({
-  posts: PostReducer,
+  posts,
 });
 
 export default Reducers;

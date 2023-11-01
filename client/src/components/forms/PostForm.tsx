@@ -7,7 +7,7 @@ import { PostModel, PostModelType } from '@/lib/models/PostModel';
 import FileBase64 from 'react-file-base64';
 import { AxiosError } from 'axios';
 import { useAppDispatch } from '@/hooks/ReduxHooks';
-import { NewPost } from '@/redux/PostSlicer';
+// import { NewPost } from '@/redux/PostSlicer';
 
 type PostFormProps = {
   post?: PostModelType | null;
@@ -32,7 +32,7 @@ const PostForm = ({ post = null }: PostFormProps) => {
   }, [post, setValue]);
 
   useEffect(() => {
-    console.log(errors);
+    // console.log(errors);
   }, [errors]);
 
   useEffect(() => {

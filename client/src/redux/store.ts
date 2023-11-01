@@ -3,7 +3,7 @@ import Reducers from '@/redux/reducers';
 import { configureStore } from '@reduxjs/toolkit';
 
 const ReduxStore = configureStore({
-  reducer: Reducers
+  reducer: {Reducers}
 });
 
 export type RootState = ReturnType<typeof ReduxStore.getState>;

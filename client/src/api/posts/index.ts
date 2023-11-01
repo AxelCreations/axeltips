@@ -10,7 +10,7 @@ type PostModelResponse = {
   data: PostModelType;
 }
 
-export const GetAllPosts = (): Promise<AxiosResponse<PostsModelResponse>> => {
+export const GetAllPosts = (): Promise<PostsModelResponse> => {
   return connection.get(`posts`);
 }
 
