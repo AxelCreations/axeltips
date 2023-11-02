@@ -5,7 +5,7 @@ export type PostModelType = z.infer<typeof PostModel.schema>;
 
 export class PostModel {
   static readonly schema = z.object({
-    id: z.string()
+    _id: z.string()
       .optional(),
     title: z.string()
       .min(1, 'Required Field'),

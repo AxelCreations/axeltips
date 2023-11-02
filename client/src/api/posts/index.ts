@@ -14,11 +14,11 @@ export const GetAllPosts = (): Promise<PostsModelResponse> => {
   return connection.get(`posts`);
 }
 
-export const AddPost = (data: PostModelType): Promise<AxiosResponse<PostModelResponse>> => {
+export const AddPost = (data: PostModelType): Promise<PostModelResponse> => {
   return connection.post(`posts`, data);
 }
 
-export const UpdatePost = (id: string, data: PostModelType): Promise<AxiosResponse<PostModelResponse>> => {
+export const UpdatePost = (id: string, data: PostModelType): Promise<PostModelResponse> => {
   return connection.put(`posts/${id}`, data);
 }
 
