@@ -5,7 +5,7 @@ import mongoose from 'mongoose';
 export const getPosts = async (req: Request, res: Response) => {
   try {
     const postMessages = await PostMessage.find();
-    console.log({postMessages});
+    console.log({ postMessages });
     res.status(200).json(postMessages);
   } catch (err) {
     if (!!err) {
@@ -39,11 +39,30 @@ export const editPost = async (req: Request, res: Response) => {
   try {
     if (!mongoose.Types.ObjectId.isValid(id)) return res.status(404).send(`No post with id: ${id}`);
 
-    const updatedPost = { creator, title, message, tags, selectedFile, _id: id };
+    const postData = { creator, title, message, tags, selectedFile, _id: id, updatedAt: new Date() };
 
-    await PostMessage.findByIdAndUpdate(id, updatedPost, { new: true });
+    const updatedPost = await PostMessage.findByIdAndUpdate(id, postData, { new: true });
 
     res.status(200).json(updatedPost);
+  } catch (err) {
+    if (!!err) {
+      console.error(err);
+      res.status(409).json({ message: err });
+    }
+  }
+}
+
+export const likePost = async (req: Request, res: Response) => {
+  const { id } = req.params
+
+  try {
+    const post = await PostMessage.findById(id);
+
+    if (!mongoose.Types.ObjectId.isValid(id) || !post) return res.status(404).send(`No post with id: ${id}`);
+
+    const updatedPost = await PostMessage.findByIdAndUpdate(id, { likeCount: post.likeCount + 1 }, { new: true });
+
+    res.status(200).json({id, likeCount: updatedPost?.likeCount});
   } catch (err) {
     if (!!err) {
       console.error(err);
@@ -60,7 +79,7 @@ export const deletePost = async (req: Request, res: Response) => {
 
     await PostMessage.findByIdAndRemove(id);
 
-    res.status(200).json({ message: "Post deleted successfully." });
+    res.status(200).json(id);
   } catch (err) {
     if (!!err) {
       console.error(err);

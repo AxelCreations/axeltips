@@ -1,4 +1,3 @@
-import { AxiosResponse } from 'axios';
 import { PostModelType } from '@/lib/models/PostModel';
 import connection from '@/lib/connection';
 
@@ -22,6 +21,10 @@ export const UpdatePost = (id: string, data: PostModelType): Promise<PostModelRe
   return connection.put(`posts/${id}`, data);
 }
 
-export const DeletePost = (id: string): Promise<AxiosResponse> => {
+export const LikePost = (id: string): Promise<{id: string, likeCount: number}> => {
+  return connection.put(`posts/${id}/like`);
+}
+
+export const DeletePost = (id: string): Promise<string> => {
   return connection.delete(`posts/${id}`);
 }

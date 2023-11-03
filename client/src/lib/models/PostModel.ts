@@ -13,12 +13,18 @@ export class PostModel {
       .min(1, 'Required Field'),
     creator: z.string()
       .min(1, 'Required Field'),
-    tags: z.array(z.string()),
+    tags: z.array(z.string())
+      .min(1, 'Required field'),
     selectedFile: z.string()
       .min(1, 'Required Field'),
-    likeCount: z.number().default(0),
-    createdAt: z.date().default(new Date()),
-    updatedAt: z.date().default(new Date()),
+    likeCount: z.number()
+      .default(0),
+    createdAt: z.date()
+      .default(new Date())
+      .optional(),
+    updatedAt: z.date()
+      .default(new Date())
+      .optional(),
   });
 
   static readonly resolver = {
