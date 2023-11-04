@@ -86,20 +86,45 @@ const PostForm = ({ post = null, setCurrentId }: PostFormProps) => {
   const resetFormState = () => {
     setCurrentId('');
     post = null;
+    setValue('_id', '');
+    setValue('title', '');
+    setValue('message', '');
+    setValue('creator', '');
+    setValue('selectedFile', '');
     setTagList([]);
     setCurrentTag('');
     if (!!fileInputRef.current) {
-      console.log({ fileInputRef });
       fileInputRef.current.value = '';
       fileInputRef.current.files = null;
     }
   }
 
   const onInputFileChange = (event: ChangeEvent<HTMLInputElement>) => {
-    const files: FileList | null = event.target.files;
+    setValue('selectedFile', '');
 
-    if (Boolean(files?.length)) {
-      console.log({ files });
+    const files: FileList | null = event.target.files;
+    // const filesArray = [];
+
+    if (!!files) {
+      for (let index = 0; index < files.length; index++) {
+        const file = files[index];
+        
+        const reader = new FileReader();
+
+        reader.readAsDataURL(file);
+
+        reader.onload = () => {
+          const fileInfo = {
+            name: file.name,
+            type: file.type,
+            size: Math.round(file.size / 1024).toString() + 'KB',
+            base64: reader.result as string,
+            file: file
+          }
+
+          setValue('selectedFile', fileInfo.base64);
+        }
+      }
     }
   }
 

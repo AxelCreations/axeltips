@@ -5,7 +5,6 @@ import mongoose from 'mongoose';
 export const getPosts = async (req: Request, res: Response) => {
   try {
     const postMessages = await PostMessage.find();
-    console.log({ postMessages });
     res.status(200).json(postMessages);
   } catch (err) {
     if (!!err) {
@@ -16,10 +15,10 @@ export const getPosts = async (req: Request, res: Response) => {
 }
 
 export const createPost = async (req: Request, res: Response) => {
-  const { body } = req;
+  const { title, message, creator, selectedFile, tags } = req.body;
 
   try {
-    const newPost = new PostMessage(body);
+    const newPost = new PostMessage({ title, message, creator, selectedFile, tags });
 
     await newPost.save();
 
@@ -79,7 +78,7 @@ export const deletePost = async (req: Request, res: Response) => {
 
     await PostMessage.findByIdAndRemove(id);
 
-    res.status(200).json(id);
+    res.status(200).json({id});
   } catch (err) {
     if (!!err) {
       console.error(err);

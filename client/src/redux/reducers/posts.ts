@@ -38,9 +38,7 @@ const posts = createReducer<PostModelType[]>([], (builder) => {
       });
     })
     .addCase(actionDeletePost, (state, action) => {
-      const newState = state.filter(currentPost => currentPost._id !== action.payload);
-
-      return [...newState];
+      return state.filter(currentPost => currentPost._id !== action.payload);
     })
     .addDefaultCase((state) => {
       return state

@@ -48,7 +48,7 @@ export const editPostAction = (post: PostModelType) => async (dispatch: (arg0: D
 
 export const likePost = (id: string) => async (dispatch: (arg0: DispatchFieldProps) => void) => {
   try {
-    const { likeCount } = await LikePost(id);
+    const { data: { likeCount } } = await LikePost(id);
 
     dispatch({ type: actionTypes.LIKE, payload: { id, likeCount } });
   } catch (error) {
@@ -58,7 +58,7 @@ export const likePost = (id: string) => async (dispatch: (arg0: DispatchFieldPro
 
 export const deletePostAction = (id: string) => async (dispatch: (arg0: DispatchFieldProps) => void) => {
   try {
-    const deletedId = await DeletePost(id);
+    const { data: { id: deletedId } } = await DeletePost(id);
 
     dispatch({ type: actionTypes.DELETE, payload: deletedId });
   } catch (error) {
