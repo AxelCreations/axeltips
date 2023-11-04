@@ -4,6 +4,7 @@ import Head from 'next/head';
 
 import { Provider } from 'react-redux';
 import ReduxStore from '@/redux/store';
+import Header from '@/components/Header';
 
 export default function App({ Component, pageProps }: AppProps) {
   return (
@@ -20,7 +21,10 @@ export default function App({ Component, pageProps }: AppProps) {
         <title>AxelTips</title>
       </Head>
       <Provider store={ReduxStore}>
-        <Component {...pageProps} />
+        <div className="flex flex-col p-5 md:p-10 max-w-7xl mx-auto gap-5">
+          <Header />
+          <Component {...pageProps} />
+        </div>
       </Provider>
     </>
   )
