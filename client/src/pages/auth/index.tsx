@@ -1,9 +1,9 @@
-import AuthForm from "@/components/forms/AuthForm";
+import AuthForms from "@/components/forms/AuthForms";
 
 const AuthPage = () => {
   return (
-    <div className="flex justify-center items-center pt-14">
-      <AuthForm />
+    <div className="flex justify-center items-center pt-5 lg:pt-14">
+      <AuthForms />
     </div>
   )
 }
