@@ -31,3 +31,12 @@ connection.interceptors.request.use((config: InternalAxiosRequestConfig) => {
 });
 
 export default connection;
+
+export const googleConnection: AxiosInstance = axios.create({
+  baseURL: 'https://www.googleapis.com/',
+  timeout: 50000,
+  headers: {
+    'Content-Type': 'application/json',
+    Accept: '*'
+  },
+});

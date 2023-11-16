@@ -1,5 +1,6 @@
 import Button from '@/components/buttons/Button';
 import InputGroup from '@/components/inputs/InputGroup';
+import GoogleLogin from 'react-google-login';
 
 const SignupForm = () => {
   return (
@@ -16,35 +17,40 @@ const SignupForm = () => {
           id='name'
           type='text'
           className='input input-md input-bordered w-full'
-          placeholder='Name' />
+          placeholder='Name'
+          required />
       </InputGroup>
       <InputGroup id="last-name" label="Last Name">
         <input
           id='last-name'
           type='text'
           className='input input-md input-bordered w-full'
-          placeholder='Last Name' />
+          placeholder='Last Name'
+          required />
       </InputGroup>
       <InputGroup id="email" label="Email">
         <input
           id='email'
           type='email'
           className='input input-md input-bordered w-full'
-          placeholder='email@domain.com' />
+          placeholder='email@domain.com'
+          required />
       </InputGroup>
       <InputGroup id="password" label="Password">
         <input
           id='password'
           type='password'
           className='input input-md input-bordered w-full'
-          placeholder='please:pass123' />
+          placeholder='please:pass123'
+          required />
       </InputGroup>
       <InputGroup id="repeat-password" label="Confirm Password">
         <input
           id='repeat-password'
           type='password'
           className='input input-md input-bordered w-full'
-          placeholder='please:pass123' />
+          placeholder='please:pass123'
+          required />
       </InputGroup>
       <Button
         className='w-full mt-3 text-lg btn-secondary'
