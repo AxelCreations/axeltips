@@ -12,6 +12,7 @@ export class GoogleInfoModel {
     family_name: z.string(),
     given_name: z.string(),
     picture: z.string(),
+    token: z.string(),
   });
 
   static readonly resolver = {

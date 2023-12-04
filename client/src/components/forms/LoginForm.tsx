@@ -3,16 +3,25 @@ import InputGroup from '@/components/inputs/InputGroup';
 import { useState } from 'react';
 import { useGoogleLogin } from '@react-oauth/google';
 import { getGoogleInfo } from '@/api/google';
+import { useAppDispatch } from '@/hooks/ReduxHooks';
+import { authAction } from '@/redux/actions/auth';
+import { useRouter } from 'next/navigation';
 
 const LoginForm = () => {
   const [googleError, setGoogleError] = useState<string | boolean>(false);
+  const dispatch = useAppDispatch();
+  const router = useRouter();
 
   const performGoogleLogin = useGoogleLogin({
     onSuccess: async tokenResponse => {
       const { access_token } = tokenResponse;
       const { data } = await getGoogleInfo(access_token);
 
-      console.log({tokenResponse, data});
+      data.token = access_token;
+
+      dispatch(authAction(data));
+
+      router.push("/");
     },
     onError: errorResponse => {
       console.error({ errorResponse });

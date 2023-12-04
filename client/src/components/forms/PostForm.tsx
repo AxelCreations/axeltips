@@ -1,7 +1,6 @@
 import { ChangeEvent, Dispatch, SetStateAction, useEffect, useRef, useState } from 'react';
 import { AxiosError } from 'axios';
 import { SubmitHandler, useForm } from 'react-hook-form';
-import FileBase64 from 'react-file-base64';
 
 import Button from '@/components/buttons/Button';
 import InputGroup from '@/components/inputs/InputGroup';

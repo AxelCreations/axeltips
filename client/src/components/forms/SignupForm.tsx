@@ -1,6 +1,5 @@
 import Button from '@/components/buttons/Button';
 import InputGroup from '@/components/inputs/InputGroup';
-import GoogleLogin from 'react-google-login';
 
 const SignupForm = () => {
   return (
